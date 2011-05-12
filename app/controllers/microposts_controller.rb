@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
   # GET /microposts.xml
   def index
     @microposts = Micropost.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @microposts }
@@ -41,7 +41,7 @@ class MicropostsController < ApplicationController
   # POST /microposts.xml
   def create
     @micropost = Micropost.new(params[:micropost])
-
+    @users = User.all
     respond_to do |format|
       if @micropost.save
         format.html { redirect_to(@micropost, :notice => 'Micropost was successfully created.') }
